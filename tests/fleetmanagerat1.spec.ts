@@ -26,7 +26,7 @@ test('FleetManagerAt1 emulates a user',async ({page}) => {
     await expect(page.locator('h1',{hasText:'Welcome'})).toHaveText('Welcome Confidence TestSio');
 })
 
-test('FleetManagerAt1 prints',async ({page}) => {
+test('FleetManagerAt1 has chart in basket',async ({page}) => {
     const fleetManagerAt1Page = new FleetManagerAt1(page);
     await fleetManagerAt1Page.goto();
     await fleetManagerAt1Page.fillLoginFormWithValidDetails();
@@ -37,6 +37,11 @@ test('FleetManagerAt1 prints',async ({page}) => {
     await fleetManagerAt1Page.clickAddMazuChart();
     await fleetManagerAt1Page.clickViewBasket();
     await expect(page).toHaveTitle(/Print on Demand Basket/);
-    await expect(page.locator('td[aria-describedby="print-chart-table_Title"]')).toHaveText('Mazus Map Of The Ocean');
+    await expect(page.locator('#totalPrice')).toHaveText('£28.00');
+
+    //await expect(page.locator('td[aria-describedby="print-chart-table_Title"]')).toHaveText('Mazus Map Of The Ocean');
+    //await expect(page.locator("#chartRow150083")).toHaveText('Mazus Map Of The Ocean');
+    //await expect(page.locator("#totalQuantity")).toHaveText('1');
+
 })
 

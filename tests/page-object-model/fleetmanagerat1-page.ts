@@ -25,8 +25,8 @@ export class FleetManagerAt1{
     }
 
     async fillLoginFormWithValidDetails(){
-        await this.usernameFieldLocator.fill('');
-        await this.passwordFieldLocator.fill('');
+        await this.usernameFieldLocator.fill('ukho_asheilac');
+        await this.passwordFieldLocator.fill('Password01');
     }
 
     async clickSubmitLoginDetails(){
