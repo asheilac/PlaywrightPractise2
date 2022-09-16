@@ -31,17 +31,16 @@ test('FleetManagerAt1 has chart in basket',async ({page}) => {
     await fleetManagerAt1Page.goto();
     await fleetManagerAt1Page.fillLoginFormWithValidDetails();
     await fleetManagerAt1Page.clickSubmitLoginDetails();
+    await page.waitForLoadState('networkidle');
     await page.goto('https://adsat1.ukho.gov.uk/UserDetails/Edit?userId=49987');
     await fleetManagerAt1Page.clickEmulateThisUser();
     await page.goto('https://adsat1.ukho.gov.uk/POD/PodPrintCharts');
     await fleetManagerAt1Page.clickAddMazuChart();
+    await page.waitForLoadState('networkidle');
     await fleetManagerAt1Page.clickViewBasket();
     await expect(page).toHaveTitle(/Print on Demand Basket/);
     await expect(page.locator('#totalPrice')).toHaveText('£28.00');
-
-    //await expect(page.locator('td[aria-describedby="print-chart-table_Title"]')).toHaveText('Mazus Map Of The Ocean');
-    //await expect(page.locator("#chartRow150083")).toHaveText('Mazus Map Of The Ocean');
-    //await expect(page.locator("#totalQuantity")).toHaveText('1');
+    await expect(page.locator("#chartRow150083")).toHaveText(/Mazus Map Of The Ocean/);
 
 })
 
