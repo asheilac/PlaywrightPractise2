@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/asheilac/PlaywrightPractise2#readme",
   "devDependencies": {
-    "@playwright/test": "^1.25.0"
+    "@playwright/test": "1.28"
   }
 }
